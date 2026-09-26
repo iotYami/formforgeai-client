@@ -1,5 +1,12 @@
 import {Card,CardHeader,CardContent,CardTitle,CardDescription} from '@/components/ui/card'
-export function FieldBuilder({icon,title,description}) {
+import type{ReactNode} from 'react'
+type FieldBuilderProps = {
+    icon: React.ReactNode,
+    key: number,
+    title: string,
+    description: string
+}
+export function FieldBuilder({icon,key,title,description}:FieldBuilderProps) {
   return (
     <div className="div flex flex-col">
         <Card>

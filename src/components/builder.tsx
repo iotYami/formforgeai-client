@@ -47,8 +47,8 @@ const HandleSelect  = (e:string)=> {
             </CardHeader>
             <CardContent>
                 <div className="flex flex-col gap-4">
-                    {fields.map((field)=> (
-                        <FieldBuilder icon={field.icon} title={field.title} description={field.description}/>
+                    {fields.map((field,key)=> (
+                        <FieldBuilder key={key} icon={field.icon} title={field.title} description={field.description}/>
                     ))}   
                 </div>
             </CardContent>
@@ -73,8 +73,8 @@ const HandleSelect  = (e:string)=> {
                     </div>
                     <div className="div flex flex-col md:flex-row gap-4">
                     {
-                        colors.map((color)=>(
-                            <Circle color={color} onClick={() => HandleSelect(color)}/>
+                        colors.map((color,key)=>(
+                            <Circle key={key} color={color} onClick={() => HandleSelect(color)}/>
                         ))
                     }
                 </div>
