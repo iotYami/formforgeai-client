@@ -1,28 +1,39 @@
-import {CardHeader, CardContent,CardTitle,CardDescription,Card,CardAction,CardFooter} from "@/components/ui/card"
-import {CaseSensitive, Plus,ToggleRight,ChevronDown,PaletteIcon,Square,Circle} from "lucide-react"
+import { CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Card } from "@/components/ui/card"
+import { CaseSensitive, ChevronDown, Circle, PaletteIcon, Plus, Square, ToggleRight } from "lucide-react"
 import { FieldBuilder } from "@/components/field-builder"
-import { useState,useEffect } from "react"
+import { useEffect, useState } from "react"
 
-const fields = [
+
+export function Builder(
+    {onchange}: {onchange:(name:string,type:string,id:number) => void}
+) {
+    const fields = [
     {
         icon: <CaseSensitive className=" text-primary" />,
         title: "Text Input",
-        description: "Short answer field"
+        description: "Short answer field",
+        name: "Text Input",
+        type: "Input",
+        id: 19,
     
     },
     {
         icon:<ToggleRight className=" text-primary" />,
         title: "Toggle",
-        description: "Switch field"
+        description: "Switch field",
+        name: "Toggle",
+        type: "Toggle",
+        id: 11,
     },
     {
         icon:<ChevronDown className=" text-primary" />,
         title: "Dropdown",
-        description: "Select an option from the dropdown"
+        description: "Select an option from the dropdown",
+        name: "Dropdown",
+        type: "Dropdown",
+        id: 12,
     }
 ]
-
-export function Builder() {
     const colors = [
     '#385503','#FF209595','#f55555'];
 const [selectedColor,SelectColor] = useState('--primary');
@@ -47,9 +58,20 @@ const HandleSelect  = (e:string)=> {
             </CardHeader>
             <CardContent>
                 <div className="flex flex-col gap-4">
+                    
                     {fields.map((field,key)=> (
-                        <FieldBuilder key={key} icon={field.icon} title={field.title} description={field.description}/>
+                        <FieldBuilder
+                            key={key}
+                            icon={field.icon}
+                            title={field.title}
+                            description={field.description}
+                            onchange={onchange}
+                            name={field.name}
+                            type={field.type}
+                            id={field.id}
+                        />
                     ))}   
+                    
                 </div>
             </CardContent>
             <CardFooter>

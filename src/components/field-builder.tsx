@@ -1,23 +1,23 @@
-import {Card,CardHeader,CardContent,CardTitle,CardDescription} from '@/components/ui/card'
-import type{ReactNode} from 'react'
+import { Card, CardDescription, CardTitle } from '@/components/ui/card'
 type FieldBuilderProps = {
     icon: React.ReactNode,
-    key: number,
     title: string,
-    description: string
+    description: string,
+    onchange: (name: string, type: string, id: number) => void,
+    name: string,
+    type: string,
+    id: number,
 }
-export function FieldBuilder({icon,key,title,description}:FieldBuilderProps) {
+export function FieldBuilder({icon,title,description,onchange,name,type,id}:FieldBuilderProps) {
   return (
-    <div className="div flex flex-col">
+    <div className="div flex flex-col p-4">
         <Card>
-            <div className="div flex flex-row gap-4 items-center">
-<CardTitle>
-                </CardTitle>
-                <div className="div flex text-primary text-xl ">
+            <div className="div flex flex-row gap-4 items-center" onClick={() => onchange(name, type, id)}>
+                <div className="div flex text-primary text-xl p-4 ">
 {icon}
                 </div>
                 
-                <div className="div flex flex-col">
+                <div className="div flex flex-col ">
                     <CardTitle>
                         {title}
                     </CardTitle>
