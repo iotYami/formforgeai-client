@@ -1,11 +1,17 @@
+import { TextCursorInput , ChevronDown, SwitchCameraIcon } from "lucide-react";
 import { Card,CardTitle,CardHeader,CardDescription,CardContent } from "./ui/card";
 import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "./ui/select";
+import { Toggle } from "./ui/toggle";
 
-const input = (name: string) => <Input placeholder={name} />;
-const toggle = (name: string) => <input type="checkbox" aria-label={name} />;
+
+
+const input = (name: string) => <div className="flex flex-row gap-4"><TextCursorInput className="text-primary" / ><Input placeholder={name} /></div>
+const toggle = (name: string) => <Toggle className='sm' variant='outline'> <SwitchCameraIcon className="text-primary"></SwitchCameraIcon>{name}</Toggle>
 const dropdown = (name: string) => (
-    <Select>
+    <div className="flex flex-row gap-4">
+        <ChevronDown className="text-primary"></ChevronDown>
+        <Select>
         <SelectTrigger aria-label={name}>
             <span className="text-muted-foreground">
                 {name}
@@ -16,6 +22,8 @@ const dropdown = (name: string) => (
             <SelectItem value="option-2">Another option</SelectItem>
         </SelectContent>    
     </Select>
+    </div>
+    
 );
 export function Canvas(
      {forms}: {forms: {name: string, type: string, id: number}[]}
@@ -44,14 +52,7 @@ export function Canvas(
 
                         </div>
 
-                        <ul>
-                        {forms.map((item) => (
-
-                            <li key={item.id} className="text-muted-foreground p-4">
-                                {'type : ' + item['type']+ ' ' + ', name : ' + item['name']}
-                            </li>
-                        ))}
-                        </ul>
+                       
                     </CardContent>
                 </Card>
             </div>

@@ -12,7 +12,7 @@ export function FieldBuilder({icon,title,description,onchange,name,type,id}:Fiel
   return (
     <div className="div flex flex-col p-4">
         <Card>
-            <div className="div flex flex-row gap-4 items-center" onClick={() => onchange(name, type, id)}>
+            <div className="div flex flex-row gap-4 items-center "  onClick={() => onchange(name, type, id)}>
                 <div className="div flex text-primary text-xl p-4 ">
 {icon}
                 </div>

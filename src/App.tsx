@@ -7,7 +7,7 @@ import { api } from "./lib/axios"
 type CanvasItem ={
     name : string,
     type:string,
-    id:number
+    id:number,
 }
 
 export function App() {
