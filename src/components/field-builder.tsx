@@ -7,12 +7,18 @@ type FieldBuilderProps = {
     name: string,
     type: string,
     id: number,
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    
 }
-export function FieldBuilder({icon,title,description,onchange,name,type,id}:FieldBuilderProps) {
+export function FieldBuilder({icon,title,description,onchange,name,type,id,setOpen}:FieldBuilderProps) {
+    const handleClick = () => {
+        onchange(name, type, id);
+        setOpen(true);
+    };
   return (
     <div className="div flex flex-col p-4">
         <Card>
-            <div className="div flex flex-row gap-4 items-center "  onClick={() => onchange(name, type, id)}>
+            <div className="div flex flex-row gap-4 items-center "  onClick={handleClick}>
                 <div className="div flex text-primary text-xl p-4 ">
 {icon}
                 </div>

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 
 
 export function Builder(
-    {onchange}: {onchange:(name:string,type:string,id:number) => void}
+    {onchange,setOpen}: {onchange:(name:string,type:string,id:number) => void,setOpen: React.Dispatch<React.SetStateAction<boolean>>}
 ) {
     const fields = [
     {
@@ -69,6 +69,7 @@ const HandleSelect  = (e:string)=> {
                             name={field.name}
                             type={field.type}
                             id={field.id}
+                            setOpen={setOpen}
                         />
                     ))}   
                     

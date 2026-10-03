@@ -1,4 +1,5 @@
 import { TextCursorInput , ChevronDown, SwitchCameraIcon } from "lucide-react";
+import { useState } from "react";
 import { Card,CardTitle,CardHeader,CardDescription,CardContent } from "./ui/card";
 import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "./ui/select";
@@ -6,9 +7,11 @@ import { Toggle } from "./ui/toggle";
 
 
 
+
 const input = (name: string) => <div className="flex flex-row gap-4"><TextCursorInput className="text-primary" / ><Input placeholder={name} /></div>
 const toggle = (name: string) => <Toggle className='sm' variant='outline'> <SwitchCameraIcon className="text-primary"></SwitchCameraIcon>{name}</Toggle>
 const dropdown = (name: string) => (
+    
     <div className="flex flex-row gap-4">
         <ChevronDown className="text-primary"></ChevronDown>
         <Select>
@@ -26,9 +29,9 @@ const dropdown = (name: string) => (
     
 );
 export function Canvas(
-     {forms}: {forms: {name: string, type: string, id: number}[]}
+     {forms,inputValue,setOpen,open}: {forms: {name: string, type: string, id: number}[], inputValue: string, setInputValue: React.Dispatch<React.SetStateAction<string>>, setOpen: React.Dispatch<React.SetStateAction<boolean>>, open: boolean}
 ){
-
+    // const [open, setOpen] = useState(false);
     return (
         <div className="flex min-w-0 flex-1 flex-col gap-4 pl-3.5">
             <div className="text-xl text-muted-foreground">CANVAS</div>
